@@ -34,7 +34,7 @@ country_codes = {
 
 NUMBER, MSGS, DELAY = range(3)
 
-@run_async
+Dispatcher.run_async
 def getapi(pn, lim, cc):
     global country_codes
     cc = str(cc).strip()
@@ -354,7 +354,7 @@ def getapi(pn, lim, cc):
             return False
     return False
 
-@run_async
+Dispatcher.run_async
 def bomb(target, counter, delay, ch, cc, update, context, msg_id):
     chat_id = update.effective_chat.id
     failed = 0
@@ -395,7 +395,7 @@ def bomb(target, counter, delay, ch, cc, update, context, msg_id):
         return
     context.bot.sendMessage(chat_id=chat_id, text="Bombing Completed!", reply_to_message_id=msg_id)
 
-@run_async
+Dispatcher.run_async
 def do_bomb(num, ctr, delay, update, context, msg_id):
     chat_id = update.effective_chat.id
     pn = num
@@ -408,7 +408,7 @@ def do_bomb(num, ctr, delay, update, context, msg_id):
     ch = [i for i in range(19)]
     bomb(pn, nm, dl, ch, '91', update, context, msg_id)
 
-@run_async
+Dispatcher.run_async
 def start(update, context):
     chat_id = update.effective_chat.id
     msg_id = update.effective_message.message_id
@@ -417,7 +417,7 @@ def start(update, context):
         return
     context.bot.sendMessage(chat_id=chat_id, text="Please use me responsibly! Press /bomb to use me", reply_to_message_id=msg_id)
 
-@run_async
+Dispatcher.run_async
 def start_bomb(update, context):
     chat_id  = update.effective_chat.id
     msg_id = update.effective_message.message_id
@@ -427,7 +427,7 @@ def start_bomb(update, context):
     context.bot.sendMessage(chat_id=chat_id, text="Alright! Send me the number you want to bomb!", reply_to_message_id=msg_id)
     return NUMBER
 
-@run_async
+Dispatcher.run_async
 def number(update, context):
     chat_id = update.effective_chat.id
     context.user_data["num"] = update.message.text
@@ -438,7 +438,7 @@ def number(update, context):
     context.bot.sendMessage(chat_id=chat_id, text="Will bomb " + update.message.text + "! Now provide the number of messages to send", reply_to_message_id=msg_id)
     return MSGS
 
-@run_async
+Dispatcher.run_async
 def msgs(update, context):
     chat_id = update.effective_chat.id
     context.user_data["msgs"] = update.message.text
@@ -446,7 +446,7 @@ def msgs(update, context):
     context.bot.sendMessage(chat_id=chat_id, text=update.message.text + " number of messages will be sent! Now provide delay", reply_to_message_id=msg_id)
     return DELAY
 
-@run_async
+Dispatcher.run_async
 def delay(update, context):
     chat_id = update.effective_chat.id
     context.user_data["delay"] = update.message.text
@@ -466,19 +466,19 @@ def delay(update, context):
         return
     return ConversationHandler.END
 
-@run_async
+Dispatcher.run_async
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-@run_async
+Dispatcher.run_async
 def cancel(update, context):
     chat_id = update.effective_chat.id
     msg_id = update.effective_message.message_id
     context.bot.sendMessage(chat_id=chat_id, text="Operation cancelled by user", reply_to_message_id=msg_id)
     return ConversationHandler.END
 
-@run_async
+Dispatcher.run_async
 def stop_bomb(update, context):
     chat_id = update.effective_chat.id
     msg_id = update.effective_message.message_id
