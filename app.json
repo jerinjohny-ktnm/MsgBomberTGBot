@@ -9,9 +9,9 @@
     "fun",
     "bomber"
   ],
-  "repository": "https://github.com/noobvishal/MsgBomberTGBot",
-  "website": "https://github.com/noobvishal/MsgBomberTGBot",
-  "success_url": "https://github.com/noobvishal/MsgBomberTGBot",
+  "repository": "https://github.com/jerinjohny-ktnm/MsgBomberTGBot",
+  "website": "https://github.com/jerinjohny-ktnm/MsgBomberTGBot",
+  "success_url": "https://github.com/jerinjohny-ktnm/MsgBomberTGBot",
   "stack": "container",
   "env": {
     "BOT_TOKEN": {
